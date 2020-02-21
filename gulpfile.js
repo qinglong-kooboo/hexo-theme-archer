@@ -24,35 +24,47 @@ gulp.task('sass', function () {
 
 // browser-sync
 // watch js
-gulp.task('reload-js', ['webpack'], function (done) {
+gulp.task('reload-js', gulp.series('webpack', async (done) => {
   browserSync.reload()
   done()
-})
+}))
 // watch sass
-gulp.task('reload-css', ['sass'], function (done) {
+gulp.task('reload-css', gulp.series('sass', async (done) => {
   browserSync.reload()
   done()
-})
+}))
 // watch layout
-gulp.task('reload-layout', function (done) {
+gulp.task('reload-layout', async (done) => {
   browserSync.reload()
   done()
 })
 // watch _config
-gulp.task('reload-config', function (done) {
+gulp.task('reload-config', async (done) => {
   browserSync.reload()
   done()
 })
 
-gulp.task('dev', ['webpack', 'sass'], function () {
+gulp.task('dev', gulp.series(['webpack', 'sass'], function () {
   browserSync.init({
     proxy: 'localhost:4000'
   })
-  gulp.watch(['./src/js/**/*.js'], ['reload-js'])
-  gulp.watch(['./src/scss/**/*.scss'], ['reload-css'])
-  gulp.watch(['./layout/**/*.ejs'], ['reload-layout'])
-  gulp.watch(['./_config.yml'], ['reload-config'])
-})
+  gulp.watch(['./src/js/**/*.js'], async (done) => {
+    browserSync.reload()
+    done()
+  })
+  gulp.watch(['./src/scss/**/*.scss'], async (done) => {
+    browserSync.reload()
+    done()
+  })
+  gulp.watch(['./layout/**/*.ejs'], async (done) => {
+    browserSync.reload()
+    done()
+  })
+  gulp.watch(['./_config.yml'], async (done) => {
+    browserSync.reload()
+    done()
+  })
+}))
 
 
 /* ========== bulid ========== */
@@ -65,6 +77,6 @@ gulp.task('webpack-prod', function (cb) {
   })
 })
 
-gulp.task('build', ['sass', 'webpack-prod'], function () {
+gulp.task('build', gulp.series(['sass', 'webpack-prod'], async () => {
   console.log(process.argv)
-})
+}))
