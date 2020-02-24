@@ -1,1 +1,158 @@
-!function(e){var n={};function o(a){if(n[a])return n[a].exports;var r=n[a]={i:a,l:!1,exports:{}};return e[a].call(r.exports,r,r.exports,o),r.l=!0,r.exports}o.m=e,o.c=n,o.d=function(e,n,a){o.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:a})},o.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return o.d(n,"a",n),n},o.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},o.p="",o(o.s=2)}({2:function(e,n){throw new Error("Module build failed: Error: [BABEL] D:\\hexo-blog\\themes\\archer\\src\\js\\search.js: .default is not a valid Plugin property\n    at D:\\hexo-blog\\themes\\archer\\node_modules\\_@babel_core@7.8.4@@babel\\core\\lib\\config\\validation\\plugins.js:62:42\n    at Array.forEach (<anonymous>)\n    at validatePluginObject (D:\\hexo-blog\\themes\\archer\\node_modules\\_@babel_core@7.8.4@@babel\\core\\lib\\config\\validation\\plugins.js:54:20)\n    at D:\\hexo-blog\\themes\\archer\\node_modules\\_@babel_core@7.8.4@@babel\\core\\lib\\config\\full.js:244:55\n    at Generator.next (<anonymous>)\n    at Function.<anonymous> (D:\\hexo-blog\\themes\\archer\\node_modules\\_@babel_core@7.8.4@@babel\\core\\lib\\gensync-utils\\async.js:26:3)\n    at Generator.next (<anonymous>)\n    at step (D:\\hexo-blog\\themes\\archer\\node_modules\\_gensync@1.0.0-beta.1@gensync\\index.js:254:32)\n    at evaluateAsync (D:\\hexo-blog\\themes\\archer\\node_modules\\_gensync@1.0.0-beta.1@gensync\\index.js:284:5)\n    at Function.errback (D:\\hexo-blog\\themes\\archer\\node_modules\\_gensync@1.0.0-beta.1@gensync\\index.js:108:7)\n    at errback (D:\\hexo-blog\\themes\\archer\\node_modules\\_@babel_core@7.8.4@@babel\\core\\lib\\gensync-utils\\async.js:70:18)\n    at async (D:\\hexo-blog\\themes\\archer\\node_modules\\_gensync@1.0.0-beta.1@gensync\\index.js:183:31)\n    at onFirstPause (D:\\hexo-blog\\themes\\archer\\node_modules\\_gensync@1.0.0-beta.1@gensync\\index.js:209:13)\n    at Generator.next (<anonymous>)\n    at cachedFunction (D:\\hexo-blog\\themes\\archer\\node_modules\\_@babel_core@7.8.4@@babel\\core\\lib\\config\\caching.js:68:46)\n    at cachedFunction.next (<anonymous>)")}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 19:
+/***/ (function(module, exports) {
+
+// special thanks to https://blog.naaln.com/2016/07/hexo-with-algolia/
+var initAlgolia = function initAlgolia() {
+  $(document).ready(function () {
+    var algoliaSettings = algolia;
+    var isAlgoliaSettingsValid = algoliaSettings.applicationID && algoliaSettings.apiKey && algoliaSettings.indexName;
+
+    if (!isAlgoliaSettingsValid) {
+      window.console.error('Algolia Settings are invalid.');
+      return;
+    }
+
+    var search = instantsearch({
+      appId: algoliaSettings.applicationID,
+      apiKey: algoliaSettings.apiKey,
+      indexName: algoliaSettings.indexName,
+      searchFunction: function searchFunction(helper) {
+        var searchInput = $('#algolia-search-input').find('input');
+
+        if (searchInput.val()) {
+          helper.search();
+        }
+      }
+    }) // Registering Widgets
+    ;
+    [instantsearch.widgets.searchBox({
+      container: '#algolia-search-input',
+      placeholder: algoliaSettings.labels.input_placeholder
+    }), instantsearch.widgets.hits({
+      container: '#algolia-hits',
+      hitsPerPage: algoliaSettings.hits.per_page || 10,
+      templates: {
+        item: function item(data) {
+          var link = data.permalink ? data.permalink : siteMeta.root + data.path;
+          return '<a href="' + link + '" class="algolia-hit-item-link">' + data._highlightResult.title.value + '</a>';
+        },
+        empty: function empty(data) {
+          return '<div id="algolia-hits-empty">' + algoliaSettings.labels.hits_empty.replace(/\$\{query}/, data.query) + '</div>';
+        }
+      },
+      cssClasses: {
+        item: 'algolia-hit-item'
+      }
+    }), instantsearch.widgets.stats({
+      container: '#algolia-stats',
+      templates: {
+        body: function body(data) {
+          var stats = algoliaSettings.labels.hits_stats.replace(/\$\{hits}/, data.nbHits).replace(/\$\{time}/, data.processingTimeMS);
+          return stats + '<span class="algolia-powered">' + '  <img src="' + siteMeta.root + 'assets/algolia_logo.svg" alt="Algolia" />' + '</span>' + '<hr />';
+        }
+      }
+    }), instantsearch.widgets.pagination({
+      container: '#algolia-pagination',
+      scrollTo: false,
+      showFirstLast: false,
+      labels: {
+        first: '<i class="fa fa-angle-double-left"></i>',
+        last: '<i class="fa fa-angle-double-right"></i>',
+        previous: '<i class="fa fa-angle-left"></i>',
+        next: '<i class="fa fa-angle-right"></i>'
+      },
+      cssClasses: {
+        root: 'pagination',
+        item: 'pagination-item',
+        link: 'page-number',
+        active: 'current',
+        disabled: 'disabled-item'
+      }
+    })].forEach(search.addWidget, search);
+    search.start();
+    $('.popup-trigger').on('click', function (e) {
+      e.stopPropagation();
+      $('body').append('<div class="search-popup-overlay algolia-pop-overlay"></div>').css('overflow', 'hidden');
+      $('.popup').toggle();
+      $('#algolia-search-input').find('input').focus();
+    });
+    $('.popup-btn-close').click(function () {
+      $('.popup').hide();
+      $('.algolia-pop-overlay').remove();
+      $('body').css('overflow', '');
+    });
+  });
+};
+
+initAlgolia();
+
+/***/ })
+
+/******/ });

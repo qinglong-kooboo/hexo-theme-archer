@@ -20,7 +20,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             <% if (is_home()) { %>
-            <%- theme.main_title || config.title%>
+            <!-- <%- theme.main_title || config.title%> -->
             <!-- 文章页  -->
 
             <!-- 404 -->
@@ -52,17 +52,17 @@
         <% if(is_post()) { %>
             <div class="post-intros">
                 <!-- 文章页标签  -->
-                <!-- <% if(page.tags.length) { %>
+                <% if(page.tags.length) { %>
                     <%- partial('base-title-tags', {
                         currPost: page,
                         className: 'post-intro-tags'}) %>
-                <% } %> -->
+                <% } %>
                 <% if(theme.reading_info) { %>
                     <div class="post-intro-read">
                         <span><%- __('word_count') %>: <span class="post-count word-count"><%= wordcount(page.content) %></span><%= __('reading_time') %>: <span class="post-count reading-time"><%= min2read(page.content) %> min</span></span>
                     </div>
                 <% } %>
-                <!-- <div class="post-intro-meta">
+                <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
                     <span class="post-intro-time"><%- date(page.date, "YYYY/MM/DD") %></span>
                     <% if (theme.busuanzi) { %>
@@ -84,7 +84,7 @@
                             <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
                         </ul>
                     </span>
-                </div> -->
+                </div>
             </div>
         <% } %>
     </div>
