@@ -47,7 +47,7 @@ SEO_keywords:
   - 'hexo-theme'
   - 'hexo-blog'
 # main title shown in header image
-main_title:
+main_title: " "
 home_link: Home
 # subtitle
 subtitle: Doing is better than saying
@@ -57,7 +57,7 @@ site_header_image: '/intro/bg-test.jpg'
 # site_header_image: https://bing.ioliu.cn/v1/rand?w=2560&h=1440
 
 # post haeder image
-post_header_image: '/intro/test2.jpg'
+post_header_image: '/intro/about-bg.jpg'
 # 404 image
 _404_image: '/intro/404-bg.jpg'
 
@@ -113,7 +113,7 @@ truncate_length:
 # enable toc
 toc: true
 # word count & reading time
-reading_info: true
+reading_info: false
 # intro height (the default is 50 percents of the screen, you can input other number)
 index_intro_height: 50
 post_intro_height: 50
