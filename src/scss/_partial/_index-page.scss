@@ -34,6 +34,13 @@
     }
   }
 }
+@media (max-width: 767px) {
+  .index-post {
+    .post-image {
+      display: none;
+    }
+  }
+}
 
 // ========== abstract title ========== //
 .abstract-title {

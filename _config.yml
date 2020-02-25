@@ -1,10 +1,12 @@
 # ========== Profile ========== #
 # avatar
-avatar: /avatar/me.png
+avatar: /avatar/zane.jpg
 # author name
 author: Zane
 # signature
-signature: peace.
+signature:
+  愿我一生欢喜, 
+  不为世俗所及
 # SNS (you can custom the order)
 social:
   wechat: /assets/wechat.png
@@ -76,7 +78,7 @@ algolia_search:
 # If you want to add other comment plugin, edit in "custom.ejs"
 comment:
   # Livere  site: https://livere.com/
-  livere_uid: 
+  livere_uid: MTAyMC80ODc5OC8yNTI5Mg==
   # Disqus  site: https://disqus.com/
   disqus_shortname: 
   # Gitment  site: https://github.com/imsun/gitment

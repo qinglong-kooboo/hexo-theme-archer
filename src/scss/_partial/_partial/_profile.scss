@@ -16,6 +16,13 @@
     padding-bottom: 0;
   }
 }
+@media (min-width: 980px) {
+  .sidebar {
+    .profile {
+      display: none;
+    }
+  }
+}
 
 .profile-avatar {
   display: block;
