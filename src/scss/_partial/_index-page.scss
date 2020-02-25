@@ -1,22 +1,36 @@
 // ========== main ========== //
 .index-post {
-  position: relative;
-  padding: 1rem 0rem 1rem 0rem;
+  display: flex;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
   z-index: 3;
 }
 
 // ========== abstract content ========== //
 .index-post {
-  .abstract-content {
-    color: #9c9c9c;
-    font-size: 1rem;
-    line-height: 1.6rem;
-    font-weight: lighter;
-    word-break: break-word;
+  .post-image {
+    display: block;
+    width: 150px;
+    height: 100px;
+    margin: auto 1rem auto 0;
     img {
-      max-width: 100%;
-      box-shadow: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .abstract-wrapper {
+    position: relative;
+    padding: 1rem 0rem 1rem 0rem;
+    .abstract-content {
+      color: #9c9c9c;
+      font-size: 1rem;
+      line-height: 1.6rem;
+      font-weight: lighter;
+      word-break: break-word;
+      img {
+        max-width: 100%;
+        box-shadow: none;
+      }
     }
   }
 }
@@ -43,7 +57,6 @@
 // ========== abstract meta ========== //
 .abstract-post-meta {
   display: flex;
-  justify-content: space-between;
   padding: 0.5rem 0 0 0;
   font-family: $feature-font-family;
   color: #aaa;
@@ -55,7 +68,7 @@
   font-size: 1rem;
   position: relative;
   color: $index-post-tag-color;
-  margin-left: 0.4rem;
+  margin-left: 2.4rem;
   font-weight: lighter;
   &::before {
     margin-right: 2px;
