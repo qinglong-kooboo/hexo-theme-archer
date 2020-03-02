@@ -37,7 +37,7 @@ friends:
   friendC: 
 about:
   enable: true
-  image: '/intro/about.jpg'
+  image: '/intro/country.jpg'
 
 # ========== Site ========== #
 # title of the site (good for SEO)
@@ -54,7 +54,7 @@ home_link: Home
 # subtitle
 subtitle: Doing is better than saying
 # site haeder image
-site_header_image: '/intro/bg-test.jpg'
+site_header_image: '/intro/about.jpg'
 # random bg
 # site_header_image: https://bing.ioliu.cn/v1/rand?w=2560&h=1440
 
