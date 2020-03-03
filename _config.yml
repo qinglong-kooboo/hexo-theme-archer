@@ -41,11 +41,11 @@ about:
 
 # ========== Site ========== #
 # title of the site (good for SEO)
-SEO_title:
+SEO_title: "Zane's blog"
 # keywords for site (good for SEO)
 SEO_keywords:
-  - Zane
-  - Blog
+  - 'Zane'
+  - 'Blog'
   - 'hexo-theme'
   - 'hexo-blog'
 # main title shown in header image

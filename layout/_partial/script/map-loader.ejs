@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css" />
+<script src="https://webapi.amap.com/maps?v=1.3&key=722cbfb5cc24e2f54ae142a0438c1f19"></script>
+<script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+<style>
+    .amap-logo,
+    .amap-toolbar,
+    .amap-copyright {
+        display: none!important;
+    }
+</style>
+<script>
+  var map = new AMap.Map('map', {
+      resizeEnable: true,
+      center: [118.0450279, 24.6090325],
+      zoom: 10
+  });
+  map.setLang('zh_en');
+  var contextMenu = new AMap.ContextMenu();  //创建右键菜单
+  //右键放大
+  contextMenu.addItem("放大一级", function() {
+      map.zoomIn();
+  }, 0);
+  //右键缩小
+  contextMenu.addItem("缩小一级", function() {
+      map.zoomOut();
+  }, 1);
+  //右键显示全国范围
+  contextMenu.addItem("缩至全国", function(e) {
+      map.setZoomAndCenter(4, [108.946609, 34.262324]);
+  }, 2);
+
+  //地图绑定鼠标右击事件——弹出右键菜单
+  map.on('rightclick', function(e) {
+      contextMenu.open(map, e.lnglat);
+      contextMenuPositon = e.lnglat;
+  });
+  var marker = new AMap.Marker({
+      position: map.getCenter(),
+      draggable: true,
+      cursor: 'move'
+  });
+  map.setMapStyle('light');
+  marker.setMap(map);
+  // 设置点标记的动画效果，此处为弹跳效果
+  marker.setAnimation('AMAP_ANIMATION_BOUNCE');
+</script>
