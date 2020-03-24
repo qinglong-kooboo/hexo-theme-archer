@@ -9,14 +9,11 @@
 .index-post {
   .post-image {
     display: block;
-    width: 150px;
-    height: 100px;
+    width: 170px;
+    height: 120px;
+    flex-shrink: 0;
     margin: auto 1rem auto 0;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    background-size: cover;
   }
   .abstract-wrapper {
     position: relative;
@@ -49,7 +46,7 @@
   padding-bottom: 0.5rem;
   span:last-of-type {
     transition: color 0.1s ease-in;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     &:hover {
       color: $feature-color;
     }

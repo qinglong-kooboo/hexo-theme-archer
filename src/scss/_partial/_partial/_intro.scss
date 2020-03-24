@@ -6,13 +6,15 @@
   left: 0;
   height: calc(100% + 1px);
   width: 100%;
-  filter: brightness(0.8);
-  -webkit-filter: brightness(0.8);
-  -moz-filter: brightness(0.8);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-color: transparent;
+}
+.about-body .site-intro-img {
+  filter: brightness(0.8);
+  -webkit-filter: brightness(0.8);
+  -moz-filter: brightness(0.8);
 }
 
 // ========== intro placeholder ========== //

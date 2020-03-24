@@ -32,9 +32,9 @@ social:
   rss: 
 # friends
 friends:
-  friendA: 
-  friendB: 
-  friendC: 
+  # friendA: 
+  # friendB: 
+  # friendC: 
 about:
   enable: true
   image: '/intro/country.jpg'

@@ -12,6 +12,7 @@
   var map = new AMap.Map('map', {
       resizeEnable: true,
       center: [118.0450279, 24.6090325],
+      scrollWheel: false,
       zoom: 10
   });
   map.setLang('zh_en');
@@ -26,7 +27,7 @@
   }, 1);
   //右键显示全国范围
   contextMenu.addItem("缩至全国", function(e) {
-      map.setZoomAndCenter(4, [108.946609, 34.262324]);
+      map.setZoomAndCenter(4, [118.1 , 24.46]);
   }, 2);
 
   //地图绑定鼠标右击事件——弹出右键菜单
